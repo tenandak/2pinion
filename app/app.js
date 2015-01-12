@@ -5,24 +5,21 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 	"MockLoginCredentials","MockProfiles","MockQuestions","MockResponses",
 	function($scope, $location, $routeParams, MockLoginCredentials, MockProfiles, MockQuestions, MockResponses){
 
-	$scope.profileTab = false;
-	$scope.homeTab = true;
+	$scope.activeTab = 0;
 	$scope.isLoggedIn = false;
 	$scope.isExpert = false;
 	$scope.mockQuestions = MockQuestions.getQuestions();
 
 	$scope.goHome = function(){
 
-		$scope.profileTab = false;
+		$scope.activeTab = 0;
 		$scope.homeTab = true;
 		$location.path("/user/" + $routeParams.userID);
 	};
 
 	$scope.goProfile = function(){
 
-		$scope.profileTab = true;
-		$scope.homeTab = false;
-		$scope.activeIndex = 1;
+		$scope.activeTab = 1;
 		$location.path("/user/" + $routeParams.userID+ "/profile");
 	};
 

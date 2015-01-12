@@ -1,7 +1,32 @@
+.header-login {
+  font-family: 'Rock Salt', cursive;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.header-homepage {
+  font-family: 'Rock Salt', cursive;
+  float:left;
+  margin-left: 20px;
+}
+
+.form-login {
+  display: block;
+  margin: 30px auto 0 auto;
+  width: 400;
+  text-align: center;
+}
+
+.navPills {
+  margin-left: 790px;
+  margin-top: 10px;
+  padding : 15px;
+}
+
 body {
   font-family: 'Lato', sans-serif;
 }
-
+/*
 .navbar-replacethis {
   padding-bottom: 50px;
 }
@@ -10,11 +35,7 @@ body {
   font-family: 'Rock Salt', cursive;
 }
 
-.header-login {
-  font-family: 'Rock Salt', cursive;
-  margin: 50px auto 0 auto;
-  text-align: center;
-}
+
 
 .form-login {
   max-width: 400px;
@@ -68,5 +89,5 @@ body {
   font-size: 16px;
   font-family: 'Lato', sans-serif;
   color: red !important;
-}
+}*/
 

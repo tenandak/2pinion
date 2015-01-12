@@ -6,15 +6,21 @@ angular.module("login", [])
 	$scope.login = function(){
 		var user = MockLoginCredentials.verify($scope.userEmail, $scope.userPassword);
 		if(user) {
+			clearLogInPage();
 			$scope.$parent.isLoggedIn = true;
 			$scope.$parent.isExpert = user.isExpert;
 			$location.path("/user/" + user.id);
-			$scope.userEmail = "";
-			$scope.userPassword = "";
+
 		} else {
 			$scope.invalidUser = true;
 		}
 
+	};
+
+	var clearLogInPage = function () {
+		$scope.userEmail = "";
+		$scope.userPassword = "";
+		$scope.invalidUser = false;
 	};
 }])
 
