@@ -5,14 +5,19 @@
 	</head>
 	<body ng-controller="homepageCtrl">
 		<!-- User's Questions -->
+		<h1><center>Your Questions</center></h1>
 		<div name="questions" class="panel panel-default" ng-repeat="question in questions" ng-show="!isExpert">
 			<div class="panel panel-default">
 				<div class="panel-body">
 			    	{{question.description}} <p> {{question.prescription}}
 				</div>
 			  	<div class="panel-footer" ng-show="question.answered">
-			  		<p ng-repeat="answer in question.answers"> 
+			  		<p ng-repeat="answer in question.formattedAnswers">
+			  			<label ng-show="answer.isOK">Y</label> 
+			  			<label ng-show="!answer.isOK">X</label>
 			  			<label>{{answer.response}}</label>
+			  			<label>{{answer.expert.name}}</label>
+			  			<label>{{answer.expert.position}}</label>
 			  		</p>
 			  	</div>
 			</div>
@@ -29,6 +34,7 @@
 			  		<input type="radio" ng-model="isOk" ng-value=false name="radio{{question.qid}}">no</input>
 			  		<input ng-model="commentInput" type="text" placeholder="Enter a Comment"></input> 
 			  		<button type="submit" ng-click="createResponse(question, isOk, commentInput)">Respond</button>
+			  		Link To Profile FUTURE
 			  	</div>
 			</div>
 		</div>

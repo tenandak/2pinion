@@ -1,5 +1,6 @@
 <html>
 	<body ng-controller="askQuestionCtrl">
+		<h1><center>Ask A Question</center></h1>
 		<form>
 			  <div class="form-group">
 			    <label for="reasonInput">Reason to visit Doctor</label>
@@ -11,20 +12,20 @@
 			  </div>
   			   <div class="checkbox">
 			  <label>
-			    <input type="checkbox" ng-model="reUse">
-			    Is this a medication you've used before?
+			    <input type="checkbox">
+			    Is this a medication you've used before? FUTURE
 			  </label>
 			</div>
 			<div class="radio">
 			  <label>
-			    <input type="radio" name="reqDoc" ng-model="reqDoc" name="group1">
-			    I want a doctor to review my prescription
+			    <input type="radio" name="reqDoc">
+			    I want a doctor to review my prescription FUTURE
 			  </label>
 			</div>
 			<div class="radio">
 			  <label>
-			    <input type="radio" name="reqPharm" id="optionsRadios2" name="group1">
-			    I want a pharmacist to review my prescription
+			    <input type="radio" name="reqPharm">
+			    I want a pharmacist to review my prescription FUTURE
 			  </label>
 			</div>
 			<button type="submit" class="btn btn-default" ng-click="submit()">Submit</button>

@@ -1,11 +1,14 @@
 angular.module("askQuestion", [])
 
-.controller("askQuestionCtrl", ["$scope", "$location", "$routeParams", function($scope, $location, $routeParams){
-	var questionID = 3;
+.controller("askQuestionCtrl", ["$scope", "$location", "$routeParams", "MockQuestions",
+	function($scope, $location, $routeParams, MockQuestions){
+
+		console.log("MockQuestions.getNextIndex()", MockQuestions.getNextIndex());
+
 	$scope.submit = function(){
 		var newQuestion = {
-			id:$routeParams.userid, 
-			qid:questionID,
+			id:$routeParams.userID, 
+			qid:MockQuestions.getNextIndex(),
 			description:$scope.reasonInput,
 			prescription:$scope.prescriptionInput, 
 			reuse:$scope.reUse,
@@ -13,8 +16,8 @@ angular.module("askQuestion", [])
 			answered:false
 		};
 
-		$scope.$parent.mockQuestions.push(newQuestion);
-		$location.path("/user/" + $routeParams.userid);
+		MockQuestions.addAQuestion(newQuestion);
+		$location.path("/user/" + $routeParams.userID);
 	};
 }])
 
