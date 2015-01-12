@@ -1,0 +1,40 @@
+<html ng-controller="homepageCtrl">
+	<head>
+		<link href="app/modules/homepage/homepage.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	</head>
+	<body ng-controller="homepageCtrl">
+		<!-- User's Questions -->
+		<div name="questions" class="panel panel-default" ng-repeat="question in questions" ng-show="!isExpert">
+			<div class="panel panel-default">
+				<div class="panel-body">
+			    	{{question.description}} <p> {{question.prescription}}
+				</div>
+			  	<div class="panel-footer" ng-show="question.answered">
+			  		<p ng-repeat="answer in question.answers"> 
+			  			<label>{{answer.response}}</label>
+			  		</p>
+			  	</div>
+			</div>
+		</div>
+
+		<!-- All Unanswered Questions -->
+		<div name="questions" class="panel panel-default" ng-repeat="question in questions" ng-show="isExpert">
+			<div class="panel panel-default">
+				<div class="panel-body">
+			    	{{question.description}} <p> {{question.prescription}}
+				</div>
+			  	<div class="panel-footer">
+			  		<input type="radio" ng-model="isOk" ng-value=true name="radio{{question.qid}}">ok</input>
+			  		<input type="radio" ng-model="isOk" ng-value=false name="radio{{question.qid}}">no</input>
+			  		<input ng-model="commentInput" type="text" placeholder="Enter a Comment"></input> 
+			  		<button type="submit" ng-click="createResponse(question, isOk, commentInput)">Respond</button>
+			  	</div>
+			</div>
+		</div>
+		<div name="ask" class="container">
+			<button ng-click="askQuestion()" ng-show="!isExpert" class="btn-login btn btn-default ">Ask A Question Now</button>
+		</div>
+			</div>
+	</body>
+</html>

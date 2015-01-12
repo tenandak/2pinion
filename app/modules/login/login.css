@@ -1,0 +1,72 @@
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+.navbar-replacethis {
+  padding-bottom: 50px;
+}
+
+.header-replacethis {
+  font-family: 'Rock Salt', cursive;
+}
+
+.header-login {
+  font-family: 'Rock Salt', cursive;
+  margin: 50px auto 0 auto;
+  text-align: center;
+}
+
+.form-login {
+  max-width: 400px;
+  padding: 30px;
+  font-size: 16px;
+  margin: 0 auto;
+  -webkit-appearance: none;
+}
+
+.input-login{
+  border-style: solid;
+  border-color: lightgray;
+  border-width: 1.5px;
+  border-radius: 6px;
+  position: relative;
+  padding: 13px;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.input-login:focus {
+  outline: none;
+  border-color: darkgray;
+}
+
+.btn-login {
+  background-color: black;
+  border-color : red;
+  width:25%;
+  margin:0 125px;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+}
+
+.btn-login:focus {
+  outline: none !important;
+  border-color: darkgray;
+}
+
+.form-header1{
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.invalid-login {
+  background-color: transparent !important;
+  border-style: none !important;
+  text-align: middle;
+  margin:0px 320px 150px 320px;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  color: red !important;
+}
+

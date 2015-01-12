@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<link href="app/modules/user/homepage.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	</head>
+	<body ng-controller="profileCtrl">
+		<table class="table table-striped">
+				<tr>
+			    <td>Name:</td>
+			    <td>{{profile.name}}</td> 
+			  </tr>
+			  <tr>
+			    <td>Age:</td>
+			    <td>{{profile.age}}</td> 
+			  </tr>
+  			  <tr>
+			    <td>Gender:</td>
+			    <td>{{profile.gender}}</td> 
+			  </tr>
+  			  <tr>
+			    <td>Diseases/Illness:</td>
+			    <td>{{profile.conditions}}</td> 
+			  </tr>
+			  <tr>
+			    <td>Allergies</td>
+			    <td>{{profile.allergies}}</td> 
+			  </tr>
+  			  <tr>
+			    <td>Current Medication:</td>
+			    <td>{{profile.meds}}</td> 
+			  </tr>
+		</table>
+	</body>
+</html>
