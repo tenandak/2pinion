@@ -5,20 +5,33 @@
 	</head>
 	<body ng-controller="homepageCtrl">
 		<!-- User's Questions -->
-		<h1><center>Your Questions</center></h1>
+		<h1><center>Welcome!</center></h1>
+		<div name="ask">
+			<p><center><button ng-show="!isExpert" ng-click="askQuestion()" class="btn btn-primary btn-lg">Ask A Question Now</button></center></p>
+		</div>
 		<div name="questions" class="panel panel-default" ng-repeat="question in questions" ng-show="!isExpert">
 			<div class="panel panel-default">
 				<div class="panel-body">
-			    	{{question.description}} <p> {{question.prescription}}
+			    	<table class="table" style="margin: 0px; table-layout:fixed;">
+			    		<tr>
+			    			<td style="width:200px;"><h3><span class="label label-default">Question:</span></h3></td>
+			    			<td style="width:500px;" class="align-cell-homepage">{{question.description}}</td>
+			    		</tr>
+			    		<tr>
+			    			<td style="width:200px;" class="align-cell-homepage" ><h3><span class="label label-primary">Prescription:</span></h3></td>
+			    			<td style="width:500px;" class="align-cell-homepage">{{question.prescription}}</td>
+			    		</tr>
+  					</table>
 				</div>
 			  	<div class="panel-footer" ng-show="question.answered">
-			  		<p ng-repeat="answer in question.formattedAnswers">
-			  			<label ng-show="answer.isOK">Y</label> 
-			  			<label ng-show="!answer.isOK">X</label>
-			  			<label>{{answer.response}}</label>
-			  			<label>{{answer.expert.name}}</label>
-			  			<label>{{answer.expert.position}}</label>
-			  		</p>
+					<table class="table">
+			    		<tr ng-repeat="answer in question.formattedAnswers">
+			    			<td ng-show="answer.isOK"><span style="color:green;" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+			    			<td ng-show="!answer.isOK"><span style="color:red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>	
+			    			<td><span class="label" style="color:black;">{{answer.response}}</span></td>
+			    			<td><span class="label label-primary" style="float:right;">- {{answer.expert.name}}, <i>{{answer.expert.position}}</i></span></td>			    			
+			    		</tr>
+  					</table>
 			  	</div>
 			</div>
 		</div>
@@ -38,9 +51,6 @@
 			  	</div>
 			</div>
 		</div>
-		<div name="ask" class="container">
-			<button ng-click="askQuestion()" ng-show="!isExpert" class="btn-login btn btn-default ">Ask A Question Now</button>
-		</div>
-			</div>
+	
 	</body>
 </html>
