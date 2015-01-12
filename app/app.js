@@ -25,6 +25,7 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 
 	$scope.goLogOut = function(){
 		$scope.isLoggedIn = false;
+		$location.path("/");
 	};
 }])
 
@@ -55,6 +56,8 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 		{id:2,email:"b@b.com",password:"b", isExpert:true},
 		{id:3,email:"c@c.com",password:"c", isExpert:false},
 		{id:4,email:"d@d.com",password:"d", isExpert:true},
+		{id:5,email:"e@e.com",password:"d", isExpert:true},
+		{id:6,email:"f@f.com",password:"d", isExpert:true},
 	];
 
     return {
@@ -153,7 +156,8 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 .factory("MockProfiles",[function(){
 	var userProfiles = [
 		{id:1,name:"Emily Swank",age:35,gender:"F",conditions:"Arthiritis,Thyroid",allergies:"Peanuts",meds:"Celebrex,Synthroid"},
-		{id:3,name:"Jeff Miller",age:65,gender:"M",conditions:"Lung Cancer",allergies:"Penicillin",meds:"none"}
+		{id:3,name:"Jeff Miller",age:65,gender:"M",conditions:"Lung Cancer",allergies:"Penicillin",meds:"none"},
+		{id:5,name:"Sarah Thompson",age:25,gender:"F",conditions:"none",allergies:"none",meds:"none"}
 	];
 
 	var expertProfiles = [

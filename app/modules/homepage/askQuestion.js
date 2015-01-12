@@ -3,8 +3,6 @@ angular.module("askQuestion", [])
 .controller("askQuestionCtrl", ["$scope", "$location", "$routeParams", "MockQuestions",
 	function($scope, $location, $routeParams, MockQuestions){
 
-		console.log("MockQuestions.getNextIndex()", MockQuestions.getNextIndex());
-
 	$scope.submit = function(){
 		var newQuestion = {
 			id:$routeParams.userID, 
