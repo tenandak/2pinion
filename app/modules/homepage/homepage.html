@@ -5,12 +5,12 @@
 	</head>
 	<body ng-controller="homepageCtrl">
 		<!-- User's Questions -->
-		<h1><center>Welcome!</center></h1>
+		<h1><center>Welcome {{name}}!</center></h1>
 		<div name="ask">
 			<p><center><button ng-show="!isExpert" ng-click="askQuestion()" class="btn btn-primary btn-lg">Ask A Question Now</button></center></p>
 		</div>
-		<div name="questions" class="panel panel-default" ng-repeat="question in questions" ng-show="!isExpert">
-			<div class="panel panel-default">
+		<div name="questions" class="panel panel-default" ng-repeat="question in questions.slice().reverse()" ng-show="!isExpert">
+			<div>
 				<div class="panel-body">
 			    	<table class="table" style="margin: 0px; table-layout:fixed;">
 			    		<tr>
@@ -29,7 +29,7 @@
 			    			<td ng-show="answer.isOK"><span style="color:green;" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
 			    			<td ng-show="!answer.isOK"><span style="color:red;" class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>	
 			    			<td><span class="label" style="color:black;">{{answer.response}}</span></td>
-			    			<td><span class="label label-primary" style="float:right;">- {{answer.expert.name}}, <i>{{answer.expert.position}}</i></span></td>			    			
+			    			<td><span class="label" style="color:#286090;float:right;">- {{answer.expert.name}}, <i>{{answer.expert.position}}</i></span></td>			    			
 			    		</tr>
   					</table>
 			  	</div>
@@ -37,19 +37,30 @@
 		</div>
 
 		<!-- All Unanswered Questions -->
-		<div name="questions" class="panel panel-default" ng-repeat="question in questions" ng-show="isExpert">
-			<div class="panel panel-default">
-				<div class="panel-body">
-			    	{{question.description}} <p> {{question.prescription}}
-				</div>
-			  	<div class="panel-footer">
-			  		<input type="radio" ng-model="isOk" ng-value=true name="radio{{question.qid}}">ok</input>
-			  		<input type="radio" ng-model="isOk" ng-value=false name="radio{{question.qid}}">no</input>
-			  		<input ng-model="commentInput" type="text" placeholder="Enter a Comment"></input> 
-			  		<button type="submit" ng-click="createResponse(question, isOk, commentInput)">Respond</button>
-			  		Link To Profile FUTURE
-			  	</div>
+		<div name="questions" class="panel panel-default" ng-repeat="question in questions.slice().reverse()" ng-show="isExpert">
+			<div class="panel-body">
+				<table class="table" style="margin: 0px; table-layout:fixed;">
+					<tr>
+						<td style="width:200px;"><h3><span class="label label-default">Question:</span></h3></td>
+						<td style="width:500px;" class="align-cell-homepage">{{question.description}}</td>
+					</tr>
+					<tr>
+						<td style="width:200px;" class="align-cell-homepage" ><h3><span class="label label-primary">Prescription:</span></h3></td>
+						<td style="width:500px;" class="align-cell-homepage">{{question.prescription}}</td>
+					</tr>
+				</table>
 			</div>
+			<div class="panel-footer">
+				<table class="table">
+					<tr>
+						<td><input type="radio" ng-model="isOk" ng-value=true name="radio{{question.qid}}"><span style="color:green;padding:5px;" class="glyphicon glyphicon-ok" aria-hidden="true"></span></input></td>
+						<td><input type="radio" ng-model="isOk" ng-value=false name="radio{{question.qid}}"><span style="color:red;padding:5px" class="glyphicon glyphicon-remove" aria-hidden="true"></span></input></td>
+				  		<td><input class="form-control" style="width:500px;" ng-model="commentInput" type="text" placeholder="Enter a Comment"></input></td> 
+				  		<td style="vertical-align:middle;"><a ng-href="#/user/{{question.id}}/profile">User's Profile</a></td> 
+				  		<td><button style="float:right;" class="btn btn-primary" type="submit" ng-click="createResponse(question, isOk, commentInput)">Respond</button></td>
+					</tr>
+				</table>
+	  		</div>
 		</div>
 	
 	</body>

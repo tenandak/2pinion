@@ -17,12 +17,14 @@ angular.module("homepage", [])
 	if($scope.isExpert){
 		$scope.questions = MockUserQuestions.getUnansweredQuestions();
 		$scope.expProfile = MockProfiles.getExpertProfile($routeParams.userID);
+		$scope.name = $scope.expProfile.name;
 
 	} else {
 		$scope.questions = MockUserQuestions.getUserQuestions($routeParams.userID);
 		for (var i=0; i <$scope.questions.length; i++) {
 			$scope.questions[i].formattedAnswers = formattedAnswers($scope.questions[i]);
 		}
+		$scope.name = MockProfiles.getUserProfile($routeParams.userID).name;
 	}
 
 

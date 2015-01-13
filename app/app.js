@@ -25,6 +25,7 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 
 	$scope.goLogOut = function(){
 		$scope.isLoggedIn = false;
+		$scope.activeTab = 0;
 		$location.path("/");
 	};
 }])
@@ -52,12 +53,12 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 .factory("MockLoginCredentials", [function(){
 
 	var userLogIn = [
-		{id:1,email:"a@a.com",password:"a", isExpert:false},
-		{id:2,email:"b@b.com",password:"b", isExpert:true},
-		{id:3,email:"c@c.com",password:"c", isExpert:false},
-		{id:4,email:"d@d.com",password:"d", isExpert:true},
-		{id:5,email:"e@e.com",password:"d", isExpert:true},
-		{id:6,email:"f@f.com",password:"d", isExpert:true},
+		{id:1,email:"emilys@gmail.com",password:"2p", isExpert:false}, 
+		{id:2,email:"michaelb@gmail.com",password:"2p", isExpert:true},
+		{id:3,email:"jeffm@gmail.com",password:"2p", isExpert:false},
+		{id:4,email:"kathyr@gmail.com",password:"2p", isExpert:true},
+		{id:5,email:"saraht@gmail.com",password:"2p", isExpert:true},
+		{id:6,email:"janicem@gmail.com",password:"2p", isExpert:true},
 	];
 
     return {
@@ -75,18 +76,25 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 .factory("MockQuestions", [function(){
 
 	var questions = [
-		{id:1, qid:1,description:"My wrists and arms have been hurting more lately, and I went to see my family physician about it. He mentioned that I should continue to use Celebrex, but a stronger dose. The side effects already made me feel bloated and I've heard that it affects my calcium levels. Could it be the medicine?",
-		prescription:"Celebrex, 400mg, 2x a day",
-		answered:true},
-		{id:1, qid:2,description:"I haven't taken my Synthroid for about 6 months and my doctor mentioned that my thyroid levels are okay, and that I won't need to take them anymore. Is this normal?",
+		{id:1, qid:1, description:"I haven't taken my Synthroid for about 6 months and my doctor mentioned that my thyroid levels are okay, and that I won't need to take them anymore. Is this normal?",
 		prescription:"none",
 		answered:true},
-		{id:3, qid:3,description:"My stomach has been hurting a lot lately, and I went to see the doctor. They said it's acid reflux and prescribed me Nexium. Should I look into this more?",
+		{id:1, qid:2, description:"My skin is very itchy and my elbows, arms, and knees have rashes. The doctor diagnosed me with eczema, but no treatement. Don't people usually get a cream?",
+		prescription:"none",
+		answered:true},
+		{id:1, qid:3, description:"I have been feeling very depressed, and so my doctor recommended me Zoloft. After taking one, I felt very lightheaded, but my doctor said that's common. Is it?",
+		prescription:"Zoloft 50mg, 1/day",
+		answered:true},
+		{id:3, qid:4, description:"My stomach has really been hurting lately, and my doctor mentioned that due to all the spicy food that I've been eating I must have an ulcer. He prescribed me DisperMox, and I just wanted to make sure it's okay to take!",
+		prescription:"DisperMox 1g",
+		answered:false},
+		{id:5, qid:5, description:"I have been diagnosed with gastritis, and prescribed this. Let me know if you think this is safe.",
 		prescription:"nexium 40mg",
 		answered:false},
-		{id:1, qid:4,description:"I have been feeling very depressed, and so my doctor recommended me Zoloft. After taking one, I felt very lightheaded, but my doctor said that's common. Is it?",
-		prescription:"Zoloft 50mg",
-		answered:true}
+		{id:5, qid:6, description:"My doctor told me for low blood pressure to eat more salt. Is this true?",
+		prescription:"none",
+		answered:false},
+		
 	];
 
 	return {
@@ -129,11 +137,11 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 
 .factory("MockResponses",[function(){
 	var answers = [
-		{id:2, qid:1, isOK:false,response:"no, that sounds wrong you should get a second opinion from a specialist!"},
-		{id:4, qid:1, isOK:false,response:"that could potentially be harmful, please double check dosage!"},
-		{id:2, qid:2, isOK:true,response:"that's very common, do not worry!"},
-		{id:6, qid:4, isOK:false,response:"YOU MAY BE ALLERGIC! STOP USING AND TALK TO ANOTHER DOCTOR!"},
+		{id:4, qid:1, isOK:true, response:"That does happen, you should be fine!"},
+		{id:2, qid:2, isOK:false,response:"You should at least get a cream. Ask to see a Dermatologist!"},
+		{id:6, qid:3, isOK:false,response:"Please do not take that! That is a very high dose. Your doctor must have made a mistake!"},
 	];
+
 	return {
 
 		getResponses: function(questionId){
@@ -155,13 +163,13 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 
 .factory("MockProfiles",[function(){
 	var userProfiles = [
-		{id:1,name:"Emily Swank",age:35,gender:"F",conditions:"Arthiritis,Thyroid",allergies:"Peanuts",meds:"Celebrex,Synthroid"},
-		{id:3,name:"Jeff Miller",age:65,gender:"M",conditions:"Lung Cancer",allergies:"Penicillin",meds:"none"},
-		{id:5,name:"Sarah Thompson",age:25,gender:"F",conditions:"none",allergies:"none",meds:"none"}
+		{id:1,name:"Emily Swank",age:25,gender:"F",conditions:"Thyroid, Eczema",allergies:"Peanuts",meds:"Synthroid"},
+		{id:3,name:"Jeff Miller",age:45,gender:"M",conditions:"none",allergies:"Penicillin",meds:"none"},
+		{id:5,name:"Sarah Thompson",age:45,gender:"F",conditions:"none",allergies:"none",meds:"none"}
 	];
 
 	var expertProfiles = [
-		{id:2, name:"Dr. Michael Brown", position:"Family Physician"},
+		{id:2, name:"Dr. Michael Brown", position:"Immunologist"},
 		{id:4, name:"Kathy Reed", position:"Pharmacologist"},
 		{id:6, name:"Dr. Janice McGiller", position:"Psychiatrist"},
 	];
