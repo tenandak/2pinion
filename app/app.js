@@ -37,11 +37,11 @@ angular.module("app",["ngRoute", "login", "homepage", "profile", "askQuestion"])
 		controller:"homepageCtrl"
 	})
 	.when("/user/:userID/profile", {
-		templateUrl:"app/modules/homepage/profile.html",
+		templateUrl:"app/modules/homepage/profile/profile.html",
 		controller:"profileCtrl"
 	})
 	.when("/user/:userID/ask", {
-		templateUrl:"app/modules/homepage/askQuestion.html",
+		templateUrl:"app/modules/homepage/askQuestion/askQuestion.html",
 		controller:"askQuestionCtrl"
 	})
 	.otherwise({
